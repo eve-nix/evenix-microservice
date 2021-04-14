@@ -1,4 +1,4 @@
-exports.getByIdHandler = async (event) => {
+exports.get = async (event) => {
     if (httpMethod !== 'GET') {
         throw new Error(`getMethod only accept GET method, you tried: ${httpMethod}`);
     }
