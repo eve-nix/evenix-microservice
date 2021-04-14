@@ -44,3 +44,9 @@ Resources:
       Environment:
         Variables:
           SOME_VAR: THIS_IS_A_VAR
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /
+            Method: GET
