@@ -54,8 +54,13 @@ Resources:
         - Action:
           - '*'
           Effect: Allow
-          Resource:
-            Ref: AppResourceArns
+          Resource: '*'
+          Condition:
+            StringEquals:
+              aws:RequestTag/aws:cloudformation:stack-name:
+              - Ref: AppId
+            ForAllValues:StringEquals:
+              aws:TagKeys: aws:cloudformation:stack-name
           Sid: StackResources
         - Action:
           - logs:CreateLogGroup
