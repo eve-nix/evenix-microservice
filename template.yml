@@ -48,7 +48,7 @@ Resources:
     Description: Creating an IAM managed policy for defining the permissions boundary for an AWS Lambda App
     Properties:
       Description: IAM policy to define the permissions boundary for IAM entities created in an AWS Lambda App
-      ManagedPolicyName: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:policy/${AppId}-${AWS::Region}-PermissionsBoundary'
+      ManagedPolicyName: !Sub '${AppId}-${AWS::Region}-PermissionsBoundary'
       PolicyDocument:
         Statement:
         - Action:
