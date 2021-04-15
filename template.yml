@@ -25,6 +25,18 @@ Parameters:
   AppId:
     Type: String
 
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: evenix-microservice-template
+    Description: A template for a Lambda-powewred microservice to be used in eve-nix.
+    Author: Chris Clifford
+    SpdxLicenseId: Apache-2.0
+    LicenseUrl: LICENSE
+    ReadmeUrl: README.md
+    HomePageUrl: https://github.com/eve-nix/evenix-microservice
+    SemanticVersion: 0.0.1
+    SourceCodeUrl: https://github.com/eve-nix/evenix-microservice
+
 # Resources declares the AWS resources that you want to include in the stack
 # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html
 Resources:
@@ -50,3 +62,12 @@ Resources:
           Properties:
             Path: /
             Method: GET
+
+  Type: AWS::Serverless::Application
+  Properties:
+    Location:
+      ApplicationId: 'arn:aws:serverlessrepo:us-east-1:012345678901:applications/my-application'
+      SemanticVersion: 1.0.0
+    Parameters:
+      StringParameter: parameter-value
+      IntegerParameter: 2
