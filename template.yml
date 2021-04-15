@@ -43,6 +43,40 @@ Resources:
   # Each Lambda function is defined by properties:
   # https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
 
+  PermissionsBoundaryPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Description: Creating an IAM managed policy for defining the permissions boundary for an AWS Lambda App
+    Properties:
+      Description: IAM policy to define the permissions boundary for IAM entities created in an AWS Lambda App
+      ManagedPolicyName: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:policy/${AppId}-${AWS::Region}-PermissionsBoundary'
+      PolicyDocument:
+        Statement:
+        - Action:
+          - '*'
+          Effect: Allow
+          Resource:
+            Ref: AppResourceArns
+          Sid: StackResources
+        - Action:
+          - logs:CreateLogGroup
+          - logs:CreateLogStream
+          - logs:DescribeLogGroups
+          - logs:PutLogEvents
+          - xray:Put*
+          Effect: Allow
+          Resource: '*'
+          Sid: StaticPermissions
+        - Action: '*'
+          Effect: Allow
+          Resource: '*'
+          Condition:
+            StringEquals:
+              aws:RequestTag/aws:cloudformation:stack-name:
+              - Ref: AppId
+            ForAllValues:StringEquals:
+              aws:TagKeys: aws:cloudformation:stack-name
+          Sid: StackResourcesTagging
+        Version: '2012-10-17'
   # This is a Lambda function config associated with the source code: get-by-id.js
   getByIdFunction:
     Type: AWS::Serverless::Function
