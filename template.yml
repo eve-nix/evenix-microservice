@@ -34,7 +34,7 @@ Metadata:
     LicenseUrl: LICENSE
     ReadmeUrl: README.md
     HomePageUrl: https://github.com/eve-nix/evenix-microservice
-    SemanticVersion: 0.0.3
+    SemanticVersion: 0.0.4
     SourceCodeUrl: https://github.com/eve-nix/evenix-microservice
 
 # Resources declares the AWS resources that you want to include in the stack
@@ -82,9 +82,11 @@ Resources:
               aws:TagKeys: aws:cloudformation:stack-name
           Sid: StackResourcesTagging
         Version: '2012-10-17'
+
   # This is a Lambda function config associated with the source code: get-by-id.js
   getByIdFunction:
     Type: AWS::Serverless::Function
+    DependsOn: PermissionsBoundaryPolicy
     Properties:
       CodeUri: .
       Handler: src/handlers/get.handler
