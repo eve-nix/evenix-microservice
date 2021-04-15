@@ -47,7 +47,7 @@ Resources:
   getByIdFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://evenix-microservice-template/.
+      CodeUri: .
       Handler: src/handlers/get.handler
       Runtime: nodejs12.x
       MemorySize: 128
