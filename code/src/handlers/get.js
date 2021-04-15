@@ -9,6 +9,6 @@ exports.get = async (event) => {
 
     return {
         statusCode: 200,
-        body: JSON.stringify({ url }),
+        body: JSON.stringify(event),
     };
 };
