@@ -34,7 +34,7 @@ Metadata:
     LicenseUrl: LICENSE
     ReadmeUrl: README.md
     HomePageUrl: https://github.com/eve-nix/evenix-microservice
-    SemanticVersion: 0.0.1
+    SemanticVersion: 0.0.2
     SourceCodeUrl: https://github.com/eve-nix/evenix-microservice
 
 # Resources declares the AWS resources that you want to include in the stack
