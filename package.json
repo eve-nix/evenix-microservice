@@ -1,7 +1,7 @@
 {
     "name": "evenix-microservice-template",
     "description": "A template for an eve-nix microservice.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "private": true,
     "dependencies": {
         "aws-sdk": "^2.660.0"
