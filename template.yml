@@ -53,6 +53,9 @@ Resources:
       MemorySize: 128
       Timeout: 60
       Description: A simple Lambda handler.
+      Policies:
+        # Give Lambda basic execution Permission to the helloFromLambda
+        - AWSLambdaBasicExecutionRole
       Environment:
         Variables:
           SOME_VAR: THIS_IS_A_VAR
